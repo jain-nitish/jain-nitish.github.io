@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Movies Narrative Visualization</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3-array.v2.min.js"></script>
+  <script type="text/javascript" src="fullpage.js"></script>
+  <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="fullpage.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="fullpage">
+    <div id="introSlide" class="section" data-anchor="intropg">
+      <div id="intro" style="text-align:center">
+        <h1> Movie Market Analysis</h1>
+        <p class="content">A visualization narrative by Nitish Jain (nitishj2@illinois.edu)</p>
+      </div>
+      <div id="intro-img">
+      </div>
+    </div>
+
+    <div id="abtSlide" class="section" data-anchor="abtvizpg">
+      <div class="content">
+        <h1>ABOUT THE VISUALIZATION</h1>
+        <p class="content">This narrative visualization uses the <span class="textHighlight">
+            Interactive Slideshow</span> approach to take you through a visual journey of the movie market from 2007 to 2016.</p>
+        <p class="content"><span class="textHighlight">The Dataset</span></p>
+        <p class="content">The movie metadata dataset was acquired from Kaggle. These dataset contains metadata for all 45,000 movies listed in the Full MovieLens Dataset. 
+        The dataset consists of movies released on or before July 2017. 
+        Data points include cast, crew, plot keywords, budget, revenue, posters, release dates, languages, production companies, countries, TMDB vote counts and vote averages.
+        The dataset also has files containing 26 million ratings from 270,000 users for all 45,000 movies. 
+        Ratings are on a scale of 1-5 and have been obtained from the official GroupLens website.
+        </p>
+        <p class="content"><span class="textHighlight">Scenes</span></p>
+        <p class="content">A consistent and cohensive template was built using CSS layout and FullPage.js to set up the
+          scenes for this visual story. Scene transition follows an
+          intuitive approach of sliding up and down via mouse wheel, touch or key-up/down. Slide navigator, along with
+          tool-tip located at the right side of each slide provides a good navigation visual cue. It also acts as a trigger allowing readers to jump to a specific slide.
+        </p>
+        <p class="content"><span class="textHighlight">Annotations</span></p>
+        <p class="content">Annotations were used to show the sku in profitability that happend because of a few externemly profitable movies.
+        These call-outs effectively paint a concise picture of the profitability in the last many years.
+        </p>
+        <p class="content"><span class="textHighlight">Tooltips & Visual Aids</span></p>
+        <p class="content">Readers can hover over the all line, bar and scatter plot charts to bring up the data-label tooltip to
+          inspect the attributes specific to that data point.
+          Axes of all line charts were clearly labeled and logarithmic scale was used whereever appropriate. 
+        </p>
+        <p class="content"><span class="textHighlight">Parameters</span></p>
+        <p class="content">Popularity, Profitability, Count of Movies, Budget and Reveue are used as parameter for filering and shaping the data within the charts.
+        Visual aids such as transitioning are used to let user easily absorb data clues. For example, using transitions, it is easier for user to understand that most popular genre is not same as most profitable genre. 
+        </p>
+        <p class="content"><span class="textHighlight">Triggers</span></p>
+        <p class="content">
+          As noted above, buttons were used on both set of bar charts to trigger the display of a proper chart. 
+          Data tooltips appear upon mouse over event on all the charts.
+          The slide navigator also serves as the trigger allowing readers to jump to a specific slide.
+        </p>
+      </div>
+    </div>
+
+    <div id="measureByGenreSlide" class="section" data-anchor="genere-bar-pg">
+      <h1>Popular is not always Profitable!</h1>
+      <div style="left:50px;position:relative">
+        <div style="top:100px;left:800px;width:450px;position:absolute">
+          <p class="content">
+            <span class="textHighlight">Most Popular Genre</span><br>Number of movies produced for each genre between
+            2007-2016.<br><br>
+            <span class="textHighlight">Most Profitable Genre</span><br>Average Profitabililty by Genre for the movies produced between 2007-2016.<br><br>
+            <span class="textHighlight">Profitability</span><br>Profitabilty is defined as x times the recovery over budget. Or in other words, (revenue-budget)/budget. 
+            Considering the distribution cost and other factors, a profitability of 2-3 times gets to break even.<br><br>
+          </p>
+        </div>
+        <div style="top:450px;left:800px;width:550px;position:absolute">
+          <p class="content">
+            <span class="textHighlight">Key Takeaway: </span>Drama and Comedy most popular genre, however Comedy and Horror are the most profitable genre.
+          </p>
+        </div>
+
+        <div id="dvGenreCharts">
+          <button id="btnPopularGenres" class="button on" data-name="movie_count_per_genre">Most Popular Genre(s)</button>
+          <button id="btnProfitableGenres" class="button" data-name="mean_profitability_per_genre">Most Profitable Genre(s)</button>
+          </br>
+          </br>
+          <i>(note:hover over the line to inspect the data)</i>
+        </div>
+        <div class="movie-by-genre-bar-chart-container"></div>
+      </div>
+    </div>
+
+    <div id="timeSeriesSlide" class="section" data-anchor="timeSeries-line-pg">
+      <h1>Movie Industry trends over time</h1>
+      <div style="left:50px;position:relative">
+        <div class="row">
+          <div class="column-half">
+            <div class="yearly-bugdet-revenue-line-chart-container"></div>
+            <div style="top:20px;left:150px;width:400px;position:relative">
+              <p class="content">
+                <span class="textHighlight">Key Takeaway: </span>Revenue is steadily increasing while the budget has stayed nearly constant.
+              </p>
+            </div>
+          </div>
+          <div class="column-half">
+            <div class="yearly-moviecount-profitability-line-chart-container"></div>
+            <div style="top:20px;left:150px;width:400px;position: relative;">
+              <p class="content">
+                <span class="textHighlight">Key Takeaway: </span>Number of Movies has stayed constant while the profitability has seen some spikes led by highly popular
+                movies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="topMoviesSlide" class="section" data-anchor="topMovies-pg">
+      <h1>Top Movies by Budget, Revenue and Popularity</h1>
+      <div style="left:50px;position:relative">
+        <div class="row">
+          <div class="column-half">
+            <div id="dvTitleTopCharts">
+              <button id="btnTopMoviesByRevenue" class="button on" data-name="revenue">Revenue</button>
+              <button id="btnTopMoviesByBudget" class="button" data-name="budget">Budget</button>
+              <button id="btnTopMoviesByPopularity" class="button" data-name="popularity">Popularity</button>
+            </div>
+            <div style="top:20px;position:relative" class="top-movies-bar-chart-container"></div>
+          </div>
+          <div class="column-half">
+            <div style="top:100px;left:100px;width:400px;position:relative">
+              <p class="content">
+                <span class="textHighlight">Key Takeaway: </span> Avatar, Star Wars and Avengers are top grossing movies while Pirates of the Caribbean has big budgets.
+                Minios and Big Hero 6 won heart of the people in terms of popularity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="bubbleSlide" class="section" data-anchor="bubble-pg">
+      <h1>Budget, Revenue and Profitability</h1>
+      <div style="left:150px;position:relative">
+        <div class="row">
+          <div class="column-threefourth">
+            <div class="scatter-plot-container"></div>
+          </div>
+          <div class="column-quarter">
+            <div style="top:100px;left:-500px;width:400px;position:relative">
+              <p class="content">
+                <span class="textHighlight">Key Takeaway: </span>Avatar series, Star Wars, Avengers and Furious series stand out !
+                They garnered high revenue with reasonable budget.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bar chart's tooltip's base structure -->
+  <div class="tooltip">
+      <div class="tip-header">
+        <h3></h3>
+        <h4></h4>
+      </div>
+      <div class="tip-body"></div>
+    </div>
+
+  <div class="tooltip-lc">
+      <h3></h3>
+    </div>  
+
+  <!-- Javascript logic -->
+  <script src="app-yearly-buget-revenue-lc.js"></script>
+  <script src="app-yearly-movies-profitability-lc.js"></script>
+  <script src="app-movie-by-genre-bc.js"></script>
+  <script src="app-movie-buget-revenue-scatterplot.js"></script>
+  <script src="app-top-movies-bc.js"></script>
+  <script src="app-common.js"></script>
+
+  <script>
+    new fullpage('#fullpage', {
+      licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
+      autoScrolling: true,
+      //scrollHorizontally:true,
+      navigation: true,
+      navigationPosition: 'right',
+      anchors: ["intropg", "abtvizpg", "genere-bar-pg", "timeSeries-line-pg", "topMovies-pg", "bubble-pg"],
+      navigationTooltips: ['Intro', 'About', 'Measures By Genre', 'Trends over time', 'Top 15 Movies by Measures', 'Big Picture with Scatter Plot'],
+      slidesNavPosition: "left",
+      keyboardScrolling: true,
+      sectionsColor: ['black', 'black', 'black', 'black', 'black', 'black'],
+      loopBottom: true,
+    });
+
+  </script>
+</body>
+
+</html>

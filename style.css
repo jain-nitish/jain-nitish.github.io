@@ -1,0 +1,206 @@
+body{
+	font: Arial, Helvetica, sans-serif;
+	color:white;
+}
+
+h1 {
+	font: 40px Arial;
+	color:white;
+	text-align: center;
+	margin:0;
+	padding:10px;
+}
+
+tspan{
+	fill: #FFFFFF
+}
+
+#intro
+{
+	margin:0;
+	padding: 0;
+}
+
+#intro-img
+{
+	background-image: url("img/movies_digital_art_collage_movie_posters_fan_art_1920x1080.jpg") ;
+	background-size:cover;
+	width: auto;;
+	height:80%;
+	margin:0;
+	padding: 0;	
+}
+
+.column-threefourth {
+	float: left;
+	width: 75%;
+  }
+
+.column-quarter {
+	float: left;
+	width: 25%;
+  }
+  
+.column-half {
+	float: left;
+	width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+	content: "";
+	display: table;
+	clear: both;
+  }
+  
+.axis,
+.axis text {
+	font: 15px Arial;
+	fill:#FFFFFF;
+} 
+
+.annotation-group {
+	font: 10px Arial;
+	fill: #feda6a;
+}
+					  
+.button {
+padding: 10px 10px;
+font-size: 15px arial;
+text-align: center;
+cursor: pointer;
+outline: none;
+color: black;
+background-color: lightgrey;
+border: none;
+border-radius: 15px;
+box-shadow: 0 5px #999;
+}
+
+.button:hover {
+		background-color:steelblue;
+		color: white;
+				}
+
+.on {
+background-color:steelblue;
+box-shadow: 0 5px #666;
+color: white;
+transform: translateY(4px);
+}
+
+/* content on slide's right pane */
+.content{
+	font: 16px Arial;
+	fill:#FFFFFF;
+	margin:10px 30px 10px 30px;
+	padding:0;
+}
+
+/* content heading on slide's right pane */
+.textHighlight{
+	color:#feda6a;
+}
+
+/* Bar chart*/
+svg {
+  border: 1px solid #ccc;
+}
+
+text {
+  font-family: 'Avenir', sans-serif;
+}
+
+.axis .domain {
+  stroke: none;
+}
+
+.x .tick line {
+  stroke: white;
+}
+
+/* Line chart styles */ 
+.axis .domain {
+  stroke: #bbb;
+}
+
+.axis .tick line {
+  stroke: #bbb;
+  stroke-width: 0.5;
+  stroke-dasharray: 4, 2;
+}
+
+/* Scatter plot */
+.axes-labels text {
+  font-size: 0.6em;
+  fill: #444;
+}
+
+button {
+  outline: none;
+  color: #555;
+  border-color: #eee;
+  background: #fefefe;
+  padding: 3px 10px;
+  font-family: Avenir;
+  transition: all 200ms;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f7f7f7;
+}
+
+button:focus {
+  background: #e7e7e7;
+}
+
+/* Tooltip */
+.tooltip {
+	position: fixed;
+	opacity: 0;
+	pointer-events: none;
+	background: #eee;
+	max-width: 200px;
+  }
+
+  .tooltip-lc {
+	position: fixed;
+	opacity: 0;
+	pointer-events: none;
+	background: #eee;
+	max-width: 200px;
+	padding: 0.5rem 0.5rem;
+  }
+
+  .tip-header {
+	border-bottom: 2px solid green;
+	padding: 0.5rem 0.5rem;
+  }
+  
+  .tip-body {
+	padding: 0.2rem 0;
+	color:black;
+  }
+  
+  h3,
+  h4 {
+	font-size: 0.9em;
+	color: #555;
+	margin: 0;
+  }
+  
+  h4 {
+	font-weight: normal;
+  }
+  
+  .tip-info {
+	margin: 0;
+	padding: 0.3rem 1em;
+	font-size: 0.8em;
+  }
+  
+  /* .tip-info:nth-of-type(even) {
+	background: #e0e0e0;
+  }
+   */
